@@ -12,7 +12,7 @@ public class Main {
         while (true) {
             System.out.format("У игрока %d слотов с оружием,"
                             + " введите номер, чтобы выстрелить,"
-                            + " -1 чтобы выйти%n",
+                            + " -1 чтобы выйти.%n",
                     player.getSlotsCount()
             );
 
@@ -21,10 +21,12 @@ public class Main {
             slot = scanner.nextInt();
             if (slot < count && slot >= 0){
                 player.shotWithWeapon(slot);
-            }else {
+            }else if(slot >= count){
                 System.out.println("В этом слоте нет оружия");
             }
-            if (slot == -1){
+            if(slot < -1){
+                System.out.println("Неверное значение! Попробуйте вновь!");
+            }else if(slot == -1){
                 break;
             }
         }
